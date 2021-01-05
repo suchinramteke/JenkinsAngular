@@ -3,6 +3,10 @@ pipeline{
 
     stages{
         stage('build'){
+            when{
+                branch 'master'
+                // changeset "**"
+            }
             steps{
                 echo 'Step build'
             }
