@@ -1,14 +1,19 @@
 pipeline{
-    agent any
+    agent {
+        docker{
+            image 'node:8.16.0-alpine '
+        }
+    }
 
     stages{
         stage('build'){
             when{
-                branch 'master'
+                branch 'docker'
                 // changeset "**"
             }
             steps{
                 echo 'Step build'
+                sh 'npm install'
             }
         }
          stage('test'){
